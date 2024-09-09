@@ -2,52 +2,39 @@
 
 Welcome to our ecommerce project! This README provides all the necessary information to get started, including links to our Jira board and Figma designs, as well as instructions for running the project locally.
 
-## Running the Project Locally
-
-To run the project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/BuilderIO/unified-demo
-   cd ecommerce
-
-## Getting Started
-
-First, run the development server:
+To run the project locally, clone this repository and run the following commands:
 
 ```bash
-npm run install
+npm install
 npm run dev
-
 ```
-## Additional Information
-
-- Refer to the `.env.example` file to understand the required environment variables format.
-- Ensure that your local environment is configured correctly to match the hostname-based environment variable setup in `middleware.ts`.
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
+## VCP component mapping
 
-## Repository Structure
+Figma-Component-to-React-Component mappings live in `*.mapper.tsx` files, these files connect specific Figma components to some of the local React components in this repos.
 
-This ecommerce project is built using Next.js and integrates with Builder.io for content management. Here's an overview of the key directories and files:
+> **IMPORTANT:** You install latest version of @builder.io/dev-tools to use figmaMapping.
+> ```bash
+> npm i @builder.io/dev-tools@latest
+> ```
 
-1. **`app/`**: Contains the main application pages and layouts.
-   - `layout.tsx`: The root layout component.
-   - `page.tsx`: The homepage component.
-   - Various subdirectories for different routes (e.g., `category/`, `product/`, etc.).
+### Publishing mappings
 
-2. **`lib/`**: Utility functions and helpers.
-   - `utils.ts`: Contains utility functions like `cn()` for class name merging.
+Mappings don't come into effect until they are published to your Builder.io space, this allows following up figma exports to reference your local components.
 
-3. **`public/`**: Static assets like images and fonts.
+To publish your mappings:
 
-4. **`components/`**: Houses reusable React components.
+```bash
+npx builder.io figma publish
+```
 
-5. **`component/mappings/`**: This directory contains mapping files for Builder.io components. These mappings define how Figma designs are translated into React components.
+### Figma Mapping Files
 
-   - `generic.mapper.tsx`: Defines generic mappings for Figma elements.
+Special files in this repository named `*.mapper.tsx` are used to map Figma components to React components.
+
+#### Generic mapper
+`generic.mapper.tsx`: Defines generic mappings for Figma elements.
 
 ```tsx
 import { figmaMapping } from "@builder.io/dev-tools/figma";
@@ -66,38 +53,9 @@ figmaMapping({
 });
 ```
 
+#### Component Mappings
 
-   - `Footer.mapper.tsx`: Maps the Footer component from Figma to React.
-
-```tsx
-import { figmaMapping } from "@builder.io/dev-tools/figma";
-import Footer from "@/components/Layout/Footer";
-
-figmaMapping({
-  componentKey: "df8ccf9e902602249fa68217953daab094570bba",
-  mapper(figma) {
-    return <Footer></Footer>;
-  },
-});
-```
-
-
-   - `Header.mapper.tsx`: Maps the Header component from Figma to React.
-
-```tsx
-import { figmaMapping } from "@builder.io/dev-tools/figma";
-import { Header } from "@/components/Layout/Header";
-
-figmaMapping({
-  componentKey: "bf08eba01818598edd0d7ca65a48372fa4395184",
-  mapper(figma) {
-    return <Header></Header>;
-  },
-});
-```
-
-
-   - `Hero.mapper.tsx`: Maps various Hero components from Figma to React.
+For example, `Hero.mapper.tsx` maps various the Hero component from Figma to React.
 
 ```tsx
 import { figmaMapping } from "@builder.io/dev-tools/figma";
@@ -128,7 +86,8 @@ figmaMapping({
 ```
 
 
-   - `design-tokens.mapper.tsx`: Defines mappings for design tokens (colors, etc.).
+#### Design Tokens Mapper
+`design-tokens.mapper.tsx` defines mappings for design tokens (colors, etc.).
 
 ```tsx
 import { figmaMapping } from "@builder.io/dev-tools/figma";
@@ -146,13 +105,9 @@ figmaMapping({
 ```
 
 
-6. **Configuration Files**:
-   - `next.config.mjs`: Next.js configuration file.
-   - `tailwind.config.ts`: Tailwind CSS configuration.
-   - `tsconfig.json`: TypeScript configuration.
-   - `package.json`: Project dependencies and scripts.
+## Builder Registry
 
-7. **`builder-registry.ts`**: Registers custom components and design tokens with Builder.io.
+`builder-registry.ts` registers custom components and design tokens with Builder.io.
 
 ```tsx
 "use client";
