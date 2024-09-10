@@ -14,12 +14,28 @@ npm run dev
 
 Figma-Component-to-React-Component mappings live in `*.mapper.tsx` files, these files connect specific Figma components to some of the local React components in this repos.
 
-> **IMPORTANT:** You install latest version of @builder.io/dev-tools to use figmaMapping.
-> ```bash
-> npm i @builder.io/dev-tools@latest
-> ```
+1. Make sure you have the latest version of @builder.io/dev-tools installed.
+```bash
+npm i @builder.io/dev-tools@latest
+```
+2. [Login/Signup in Builder.io](https://builder.io/login)
 
-### Publishing mappings
+3. Publish existing mappings into your Builder.io space. (The CLI might prompt you to authorize with Builder.io.)
+```bash
+npx builder.io figma publish
+```
+
+3. Open the [Sample Figma file](https://www.figma.com/design/gk3fgi86UxOGgZQohLgSGK/VCP-demo?node-id=0-1&t=IQ27EabKQr6yqH2k-1)
+This figma files includes several components, some of which are already mapped in this repository, and some Homepage example to export to builder.io.
+
+
+4. Open the [Builder.io Figma Plugin](https://www.figma.com/community/plugin/747985167520967365/builder-io-ai-powered-figma-to-code-react-vue-tailwind-more) and login into the same account/space as you did in step 2.
+
+5. Click Generate Code, you will be able to see the generated code properly import and use the components in this repo.
+
+
+
+### Why publishing mappings?
 
 Mappings don't come into effect until they are published to your Builder.io space, this allows following up figma exports to reference your local components.
 
