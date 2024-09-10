@@ -31,6 +31,8 @@ This figma files includes several components, some of which are already mapped i
 
 4. Open the [Builder.io Figma Plugin](https://www.figma.com/community/plugin/747985167520967365/builder-io-ai-powered-figma-to-code-react-vue-tailwind-more) and login into the same account/space as you did in step 2.
 
+https://github.com/user-attachments/assets/1ecd77b6-e990-4d4a-96e1-939efdf1b305
+
 5. Click Generate Code, you will be able to see the generated code properly import and use the components in this repo.
 
 
