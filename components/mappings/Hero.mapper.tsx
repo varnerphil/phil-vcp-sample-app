@@ -2,7 +2,7 @@ import { figmaMapping } from "@builder.io/dev-tools/figma";
 import ImageHero from "@/components/Hero/ImageHero";
 
 figmaMapping({
-  componentKey: "4bd6da0f53b73a462b070b55dd055ce6a4cb3eca",
+  url: "https://www.figma.com/design/gk3fgi86UxOGgZQohLgSGK/VCP-demo?node-id=1-82&node-type=SYMBOL&t=IQ27EabKQr6yqH2k-11",
   mapper(figma) {
     return (
       <ImageHero
