@@ -98,7 +98,7 @@ const ImageSelector: FC<ImageSelectorProps> = ({
     {options?.map((option, index) => (
       <div key={index} className={`shrink-0 rounded-lg flex overflow-hidden justify-center border-solid h-[119px] w-[136px] cursor-pointer ${
         selectedImage?.image == option.image ? "border border-black border-solid" : ""}`}>
-        <RadioGroupItem 
+        <RadioGroupItem
         id={`image-${option.image}`}
         // @ts-ignore
         value={option}
@@ -191,8 +191,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState(product?.data?.colors?.[0]?.label || null);
   const [selectedSize, setSelectedSize] = useState(product?.data?.sizes?.[0]?.label || null);
   const [selectedImage, setSelectedImage] = useState(product?.data?.images?.[0]);
-  
-  
+
+
   return (
     <BuilderContent model="product-data" content={product}>
       {(productData) => {
@@ -210,7 +210,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                     </Link>
                     </Button>
                   {productData?.subCategory && <Button variant="link" className="flex-auto my-auto">/ {capitalizeWord(productData?.subCategory)}</Button>}
-                  
+
                 </div>
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                 <div className="flex flex-col max-md:ml-0 md:w-1/2 w-full lg:max-h-80 relative">
@@ -233,7 +233,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                         <div className="flex flex-col w-[86%] md:ml-0 max-md:w-full">
                           <div className="flex flex-col grow">
-                            
+
                             <div className="text-2xl font-semibold text-center text-black tracking-[5.04px] mt-8">
                               {productData?.productName}
                             </div>
@@ -325,8 +325,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
             </div>
             {/* <div className="mt-1 w-full max-md:max-w-full">
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-               
-                
+
+
               </div>
             </div> */}
             <SpecificationList details={specificationDetails} />
