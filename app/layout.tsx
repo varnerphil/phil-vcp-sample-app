@@ -22,7 +22,8 @@ export default async function RootLayout({
         <QueryProvider>
           <main>
             {bannerContent && <RenderBuilderContent model="banner" content={bannerContent} />}
-            <div>{children}</div>
+            <Header content={headerContent} />
+            <div className="container">{children}</div>
           </main>
         </QueryProvider>
       </body>
