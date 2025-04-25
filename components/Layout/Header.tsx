@@ -2,6 +2,7 @@
 "use client"
 import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
 import {
@@ -17,15 +18,24 @@ import { AuthSlider } from "./AuthSlider"
 import { CartSlider } from "./CartSlider"
 import { SideNav } from "./SideNav"
 import { BuilderContent } from '@builder.io/react';
+import { useLanguage } from "@/lib/hooks/useLanguage"
 
+type Language = 'en' | 'es';
+
+const languageLinks: Record<Language, string> = {
+  en: "/en/home",
+  es: "/es/home",
+};
 
 export function Header({ headerContent }: any) {
+  const router = useRouter();
+  const { language, changeLanguage } = useLanguage();
+
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => (
         <header className="w-full flex flex-1 border-y mb-4">
-          <div className="px-4 p-3 flex justify-between container">
-
+          <div className="px-4 p-3 flex justify-between container gap-4">
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
@@ -45,9 +55,7 @@ export function Header({ headerContent }: any) {
                   return (
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
-                        {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
                         <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
-                        {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
                   )
@@ -55,13 +63,26 @@ export function Header({ headerContent }: any) {
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center">
+              <select
+                value={language}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                  const value = e.target.value as Language;
+                  console.log(`Selected language: ${value}, Navigating to: ${languageLinks[value]}`);
+                  changeLanguage(value);
+                  router.push(languageLinks[value]);
+                }}
+                aria-label="Select language"
+                className="border border-neutral-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-300 bg-white text-gray-800"
+              >
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+              </select>
               <CartSlider variant="black" />
               <AuthSlider variant="black" />
             </div>
           </div>
         </header>
-      )
-      }
+      )}
     </BuilderContent>
   );
 }
